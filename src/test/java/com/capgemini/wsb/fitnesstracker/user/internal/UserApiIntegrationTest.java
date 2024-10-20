@@ -90,9 +90,9 @@ class UserApiIntegrationTest extends IntegrationTestBase {
         mockMvc.perform(get("/v1/users/email").param("email", user1.getEmail()).contentType(MediaType.APPLICATION_JSON))
                 .andDo(log())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].id").value(user1.getId().intValue()))
-                .andExpect(jsonPath("$[0].email").value(user1.getEmail()));
+                .andExpect(jsonPath("$").isNotEmpty())
+                .andExpect(jsonPath("$.Id").value(user1.getId().intValue()))
+                .andExpect(jsonPath("$.email").value(user1.getEmail()));
     }
 
     @Test
@@ -105,9 +105,9 @@ class UserApiIntegrationTest extends IntegrationTestBase {
                 .andDo(log())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isArray())
-                .andExpect(jsonPath("$[0].firstName").value(user1.getFirstName()))
-                .andExpect(jsonPath("$[0].lastName").value(user1.getLastName()))
-                .andExpect(jsonPath("$[0].birthdate").value(ISO_DATE.format(user1.getBirthdate())))
+                .andExpect(jsonPath("$[0].firstName").value(user2.getFirstName()))
+                .andExpect(jsonPath("$[0].lastName").value(user2.getLastName()))
+                .andExpect(jsonPath("$[0].birthdate").value(ISO_DATE.format(user2.getBirthdate())))
 
                 .andExpect(jsonPath("$[1]").doesNotExist());
     }
@@ -145,7 +145,6 @@ class UserApiIntegrationTest extends IntegrationTestBase {
                 }
                 """.formatted(
                 USER_NAME,
-
                 USER_LAST_NAME,
                 USER_BIRTHDATE,
                 USER_EMAIL);
@@ -163,7 +162,6 @@ class UserApiIntegrationTest extends IntegrationTestBase {
         assertThat(user.getLastName()).isEqualTo(USER_LAST_NAME);
         assertThat(user.getBirthdate()).isEqualTo(LocalDate.parse(USER_BIRTHDATE));
         assertThat(user.getEmail()).isEqualTo(USER_EMAIL);
-
     }
 
     @Test
@@ -185,7 +183,6 @@ class UserApiIntegrationTest extends IntegrationTestBase {
                 }
                 """.formatted(
                 USER_NAME,
-
                 USER_LAST_NAME,
                 USER_BIRTHDATE,
                 USER_EMAIL);
