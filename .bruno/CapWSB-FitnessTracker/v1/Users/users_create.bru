@@ -1,0 +1,20 @@
+meta {
+  name: users_create
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:8080/v1/users
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "firstName": "Tester",
+    "lastName": "Testson",
+    "birthdate": "1999-09-11",
+    "email": "Tester.Testson@domain.com"
+  }
+}

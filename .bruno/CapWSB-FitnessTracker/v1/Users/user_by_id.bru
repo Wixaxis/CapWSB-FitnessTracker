@@ -1,0 +1,15 @@
+meta {
+  name: user_by_id
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:8080/v1/users/:Id
+  body: none
+  auth: none
+}
+
+params:path {
+  Id: 11
+}

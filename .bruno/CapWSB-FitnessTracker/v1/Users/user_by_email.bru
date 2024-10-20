@@ -1,0 +1,15 @@
+meta {
+  name: user_by_email
+  type: http
+  seq: 6
+}
+
+get {
+  url: http://localhost:8080/v1/users/email?email=Emma.Johnson@domain.com
+  body: none
+  auth: none
+}
+
+params:query {
+  email: Emma.Johnson@domain.com
+}
