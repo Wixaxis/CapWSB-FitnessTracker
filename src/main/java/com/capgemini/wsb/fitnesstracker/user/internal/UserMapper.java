@@ -15,7 +15,7 @@ class UserMapper {
     }
 
     SimpleUserDto toSimpleDto(User user) {
-        return new SimpleUserDto(user.getFirstName(), user.getLastName());
+        return new SimpleUserDto(user.getId(), user.getFirstName(), user.getLastName());
     }
 
     User toEntity(UserDto userDto) {
