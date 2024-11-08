@@ -56,6 +56,15 @@ class UserController {
         return userMapper.toDto(userService.getUserByEmail(email).get());
     }
 
+    @GetMapping("/email/fragment")
+    public List<EmailUserDto> getUsersByEmailFragment(@RequestParam String emailFragment) {
+        return userService.findUsersByEmailFragment(emailFragment)
+                .stream()
+                .map(userMapper::toEmailUserDto)
+                .toList();
+    }
+
+
     @GetMapping("/simple")
     public List<SimpleUserDto> getSimpleUsers() {
         return userService.findAllUsers()
