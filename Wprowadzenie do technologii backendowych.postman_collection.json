@@ -264,6 +264,113 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "trainings",
+			"item": [
+				{
+					"name": "GET all trainings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{trainings_base_url}}",
+							"host": [
+								"{{trainings_base_url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET trainings by user ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{trainings_base_url}}/3",
+							"host": [
+								"{{trainings_base_url}}"
+							],
+							"path": [
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET trainings finished after",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{trainings_base_url}}/finished/:afterTime",
+							"host": [
+								"{{trainings_base_url}}"
+							],
+							"path": [
+								"finished",
+								":afterTime"
+							],
+							"variable": [
+								{
+									"key": "afterTime",
+									"value": "2024-01-14"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET trainings by activity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{trainings_base_url}}/activityType?activityType=WALKING",
+							"host": [
+								"{{trainings_base_url}}"
+							],
+							"path": [
+								"activityType"
+							],
+							"query": [
+								{
+									"key": "activityType",
+									"value": "WALKING"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET training",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{trainings_base_url}}/training/:trainingId",
+							"host": [
+								"{{trainings_base_url}}"
+							],
+							"path": [
+								"training",
+								":trainingId"
+							],
+							"variable": [
+								{
+									"key": "trainingId",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
@@ -294,6 +401,11 @@
 		{
 			"key": "users_base_url",
 			"value": "http://localhost:8080/v1/users",
+			"type": "string"
+		},
+		{
+			"key": "trainings_base_url",
+			"value": "http://localhost:8080/v1/trainings",
 			"type": "string"
 		}
 	]
