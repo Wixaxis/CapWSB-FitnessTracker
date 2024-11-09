@@ -5,7 +5,9 @@ import java.util.Optional;
 
 import com.capgemini.wsb.fitnesstracker.training.internal.ActivityType;
 
-
+/**
+ * Interface for providing training-related operations.
+ */
 public interface TrainingProvider {
 
     /**
@@ -35,7 +37,7 @@ public interface TrainingProvider {
     /**
      * Retrieves training sessions that ended after a specified timestamp.
      *
-     * @param timestamp The timestamp after which the trainings ended
+     * @param afterTime The after time in string format (YYYY-MM-DD) which the trainings ended
      * @return A list of Training entities that ended after the specified timestamp
      */
     List<Training> findFinishedTrainingsAfter(String afterTime);
