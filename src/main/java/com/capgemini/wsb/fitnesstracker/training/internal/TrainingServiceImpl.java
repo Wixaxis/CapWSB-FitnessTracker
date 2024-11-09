@@ -31,7 +31,7 @@ class TrainingServiceImpl implements TrainingProvider, TrainingService {
 
     @Override
     public List<Training> findTrainingsByUserId(Long userId) {
-        throw new UnsupportedOperationException("Not finished yet");
+        return trainingRepository.findByUserId(userId);
     }
 
     @Override
