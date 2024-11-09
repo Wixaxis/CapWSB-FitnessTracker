@@ -1,18 +1,17 @@
 package com.capgemini.wsb.fitnesstracker.training.internal;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
 
 import com.capgemini.wsb.fitnesstracker.training.api.Training;
 import com.capgemini.wsb.fitnesstracker.training.api.TrainingProvider;
 import com.capgemini.wsb.fitnesstracker.training.api.TrainingService;
-import com.capgemini.wsb.fitnesstracker.training.internal.ActivityType;
-import com.capgemini.wsb.fitnesstracker.user.api.User;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
-// TODO: Provide Impl
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -20,19 +19,18 @@ class TrainingServiceImpl implements TrainingProvider, TrainingService {
 
     public final TrainingRepository trainingRepository;
 
-
     @Override
-    public Optional<User> getTraining(final Long trainingId) {
+    public Optional<Training> getTraining(Long trainingId) {
         throw new UnsupportedOperationException("Not finished yet");
     }
 
     @Override
     public List<Training> findAllTrainings() {
-        throw new UnsupportedOperationException("Not finished yet");
+        return trainingRepository.findAll();
     }
 
     @Override
-    public List<Training> findTrainingsForUser(User user) {
+    public List<Training> findTrainingsByUserId(Long userId) {
         throw new UnsupportedOperationException("Not finished yet");
     }
 
@@ -46,5 +44,14 @@ class TrainingServiceImpl implements TrainingProvider, TrainingService {
         throw new UnsupportedOperationException("Not finished yet");
     }
 
+    @Override
+    public Training createTraining(Training training) {
+        throw new UnsupportedOperationException("Not finished yet");
+    }
 
+    @Override
+    public Training updateTraining(Training training) {
+        throw new UnsupportedOperationException("Not finished yet");
+    }
+    
 }

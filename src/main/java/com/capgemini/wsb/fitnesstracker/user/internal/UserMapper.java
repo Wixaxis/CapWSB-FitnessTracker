@@ -1,13 +1,16 @@
 package com.capgemini.wsb.fitnesstracker.user.internal;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.capgemini.wsb.fitnesstracker.user.api.User;
+
 import org.springframework.stereotype.Component;
 
 /**
  * Mapper component for converting between User entities and various User DTOs.
  */
 @Component
-class UserMapper {
+public class UserMapper {
 
     /**
      * Converts a User entity to a UserDto.
@@ -15,7 +18,7 @@ class UserMapper {
      * @param user The User entity to convert
      * @return The corresponding UserDto
      */
-    UserDto toDto(User user) {
+    public UserDto toDto(User user) {
         return new UserDto(user.getId(),
                            user.getFirstName(),
                            user.getLastName(),
