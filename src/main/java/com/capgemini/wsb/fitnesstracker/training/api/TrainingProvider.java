@@ -1,10 +1,9 @@
 package com.capgemini.wsb.fitnesstracker.training.api;
 
-import com.capgemini.wsb.fitnesstracker.training.internal.ActivityType;
-import com.capgemini.wsb.fitnesstracker.user.api.User;
-
-import java.util.Optional;
 import java.util.List;
+import java.util.Optional;
+
+import com.capgemini.wsb.fitnesstracker.training.internal.ActivityType;
 
 
 public interface TrainingProvider {
@@ -39,7 +38,7 @@ public interface TrainingProvider {
      * @param timestamp The timestamp after which the trainings ended
      * @return A list of Training entities that ended after the specified timestamp
      */
-    List<Training> findTrainingsEndedAfter(Long timestamp);
+    List<Training> findFinishedTrainingsAfter(String afterTime);
 
     /**
      * Retrieves training sessions for a specific activity type.

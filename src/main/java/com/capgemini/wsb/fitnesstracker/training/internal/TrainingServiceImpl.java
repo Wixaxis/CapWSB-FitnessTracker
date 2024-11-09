@@ -1,5 +1,8 @@
 package com.capgemini.wsb.fitnesstracker.training.internal;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,9 +38,17 @@ class TrainingServiceImpl implements TrainingProvider, TrainingService {
     }
 
     @Override
-    public List<Training> findTrainingsEndedAfter(Long timestamp) {
-        throw new UnsupportedOperationException("Not finished yet");
+    public List<Training> findFinishedTrainingsAfter(String afterTime) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date;
+        try {
+            date = sdf.parse(afterTime);
+        } catch (ParseException e) {
+            throw new IllegalArgumentException("Invalid date format: " + afterTime);
+        }
+        return trainingRepository.findByEndTimeAfter(date);
     }
+
 
     @Override
     public List<Training> findTrainingsForActivity(ActivityType activityType) {

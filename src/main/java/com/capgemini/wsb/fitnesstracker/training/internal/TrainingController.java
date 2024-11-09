@@ -38,5 +38,13 @@ class TrainingController {
                 .toList();
     }
 
+    @GetMapping("/finished/{afterTime}")
+    public List<TrainingDto> getFinishedTrainingsAfter(@PathVariable String afterTime) {
+        return trainingService.findFinishedTrainingsAfter(afterTime)
+                .stream()
+                .map(trainingMapper::toDto)
+                .toList();
+    }
+
 
 }
