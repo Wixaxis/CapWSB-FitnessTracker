@@ -29,6 +29,13 @@ public interface UserProvider {
      * @return An {@link Optional} containing the all users,
      */
     List<User> findAllUsers();
-    List<User> findUsersByEmailFragment(String emailFragment);
 
-}
+    /**
+     * Retrieves a list of users whose email contains the specified fragment.
+     * This method performs a search based on a partial match of the email.
+     *
+     * @param emailFragment The fragment of the email to search for
+     * @return A list of users whose email contains the specified fragment
+     */
+    List<User> findUsersByEmailFragment(String emailFragment);
+    }
