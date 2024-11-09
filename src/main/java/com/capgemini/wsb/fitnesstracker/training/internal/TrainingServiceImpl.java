@@ -9,6 +9,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.wsb.fitnesstracker.training.api.Training;
+import com.capgemini.wsb.fitnesstracker.training.api.TrainingNotFoundException;
 import com.capgemini.wsb.fitnesstracker.training.api.TrainingProvider;
 import com.capgemini.wsb.fitnesstracker.training.api.TrainingService;
 
@@ -24,7 +25,11 @@ class TrainingServiceImpl implements TrainingProvider, TrainingService {
 
     @Override
     public Optional<Training> getTraining(Long trainingId) {
-        throw new UnsupportedOperationException("Not finished yet");
+        try {
+            return trainingRepository.findById(trainingId);
+        } catch (Exception e) {
+            throw new TrainingNotFoundException(trainingId);
+        }
     }
 
     @Override
@@ -49,10 +54,9 @@ class TrainingServiceImpl implements TrainingProvider, TrainingService {
         return trainingRepository.findByEndTimeAfter(date);
     }
 
-
     @Override
-    public List<Training> findTrainingsForActivity(ActivityType activityType) {
-        throw new UnsupportedOperationException("Not finished yet");
+    public List<Training> findTrainingsByActivityType(ActivityType activityType) {
+        return trainingRepository.findByActivityType(activityType);
     }
 
     @Override

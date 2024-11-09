@@ -1,13 +1,15 @@
 package com.capgemini.wsb.fitnesstracker.training.internal;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.capgemini.wsb.fitnesstracker.user.internal.UserMapper;
+import com.capgemini.wsb.fitnesstracker.training.api.TrainingNotFoundException;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,9 +20,18 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 class TrainingController {
 
-    private final UserMapper userMapper;
     private final TrainingServiceImpl trainingService;
     private final TrainingMapper trainingMapper;
+
+    @GetMapping("/training/{trainingId}")
+    public Optional <TrainingDto> getTraining(@PathVariable Long trainingId) {
+        try {
+            return trainingService.getTraining(trainingId)
+                    .map(trainingMapper::toDto);
+        } catch (TrainingNotFoundException e) {
+            throw e;
+        }
+        }
 
     @GetMapping
     public List<TrainingDto> getAllTrainings() {
@@ -46,5 +57,12 @@ class TrainingController {
                 .toList();
     }
 
+    @GetMapping("/activityType")
+    public List<TrainingDto> getTrainingsByActivityType(@RequestParam ActivityType activityType) {
+        return trainingService.findTrainingsByActivityType(activityType)
+                .stream()
+                .map(trainingMapper::toDto)
+                .toList();
+    }
 
 }

@@ -46,6 +46,6 @@ public interface TrainingProvider {
      * @param activityType The type of activity for which trainings are to be retrieved
      * @return A list of Training entities for the specified activity type
      */
-    List<Training> findTrainingsForActivity(ActivityType activityType);
+    List<Training> findTrainingsByActivityType(ActivityType activityType);
 
 }

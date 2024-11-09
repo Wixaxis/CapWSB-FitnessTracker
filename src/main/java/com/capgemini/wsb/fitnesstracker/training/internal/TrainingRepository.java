@@ -10,5 +10,6 @@ import com.capgemini.wsb.fitnesstracker.training.api.Training;
 interface TrainingRepository extends JpaRepository<Training, Long> {
     List <Training> findByUserId(Long userId);
     List <Training> findByEndTimeAfter(Date endTime);
+    List<Training> findByActivityType(ActivityType activityType);
 
 }
