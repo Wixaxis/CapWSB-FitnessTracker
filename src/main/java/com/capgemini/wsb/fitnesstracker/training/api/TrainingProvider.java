@@ -17,6 +17,7 @@ public interface TrainingProvider {
      * @param trainingId id of the training to be searched
      * @return An {@link Optional} containing the located Training, or {@link Optional#empty()} if not found
      */
+    // Zamienilismy tutaj typ zwracany z Optional<User> na Optional<Training>, ponieważ metoda zwraca trening, a nie użytkownika
     Optional<Training> getTraining(Long trainingId);
 
     /**

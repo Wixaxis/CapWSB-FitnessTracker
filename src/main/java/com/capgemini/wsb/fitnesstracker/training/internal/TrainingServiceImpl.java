@@ -16,6 +16,12 @@ import com.capgemini.wsb.fitnesstracker.training.api.TrainingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+
+// Zmieniliśmy tutaj dostępność tej klasy (była public), ponieważ jak Pan mówił na zajęciach,
+// że powinniśmy dawać dostęp do klasy tylko wtedy, gdy jest to konieczne.
+// Więc aby miało sens rozdzielenie interfejsów od implementacji, to nie powinno być public.
+// Z tego powodu nie ma żadnych testów jednostkowych dla modułów z folderu ../API
+
 /**
  * Service implementation for managing training sessions.
  * Provides methods to retrieve, create, and update training sessions.

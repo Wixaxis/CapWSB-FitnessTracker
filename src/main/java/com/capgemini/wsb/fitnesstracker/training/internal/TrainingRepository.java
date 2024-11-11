@@ -11,6 +11,8 @@ import com.capgemini.wsb.fitnesstracker.training.api.Training;
  * Repository interface for managing Training entities.
  * Extends JpaRepository to provide CRUD operations and custom query methods.
  */
+// Zmieniliśmy dostępność interfejsu na internalny, ponieważ nie ma potrzeby, aby był publiczny.
+    // Dokładniej powód jest opisany w TrainingServiceImpl.java
 interface TrainingRepository extends JpaRepository<Training, Long> {
 
     /**

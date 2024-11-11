@@ -17,6 +17,7 @@ import jakarta.annotation.Nullable;
  * @param birthdate The birthdate of the user, formatted as yyyy-MM-dd
  * @param email The email address of the user
  */
+// Zminilismy dostępność rekordu na publiczny, aby móc go wykorzystywać w module training
 public record UserDto(@Nullable Long Id, String firstName, String lastName,
         @JsonFormat(pattern = "yyyy-MM-dd") LocalDate birthdate,
         String email) {

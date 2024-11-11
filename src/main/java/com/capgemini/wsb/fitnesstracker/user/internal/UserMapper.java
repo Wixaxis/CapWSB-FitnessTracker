@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 /**
  * Mapper component for converting between User entities and various User DTOs.
  */
+// Zminilismy dostępność komponentu na publiczny, aby móc go wykorzystywać w module training
 @Component
 public class UserMapper {
 
@@ -18,6 +19,7 @@ public class UserMapper {
      * @param user The User entity to convert
      * @return The corresponding UserDto
      */
+    // Zminilismy dostępność obiektu na publiczny, aby móc go wykorzystywać w module training
     public UserDto toDto(User user) {
         return new UserDto(user.getId(),
                            user.getFirstName(),
