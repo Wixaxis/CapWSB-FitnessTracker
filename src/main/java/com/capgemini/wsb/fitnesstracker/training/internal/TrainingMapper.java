@@ -40,10 +40,12 @@ class TrainingMapper {
      * @return The mapped TrainingDto object
      */
     public TrainingDto toDto(Training training){
-        UserDto userDto = userMapper.toDto(training.getUser());
+        if (training == null) {
+            return null;
+        }
         return new TrainingDto(
                 training.getId(),
-                userDto,
+                userMapper.toDto(training.getUser()),
                 training.getStartTime(),
                 training.getEndTime(),
                 training.getActivityType(),
