@@ -36,11 +36,10 @@ class TrainingServiceImpl implements TrainingProvider, TrainingService {
      */
     @Override
     public Optional<Training> getTraining(Long trainingId) {
-        try {
-            return trainingRepository.findById(trainingId);
-        } catch (Exception e) {
+        if (trainingRepository.findById(trainingId).isEmpty()) {
             throw new TrainingNotFoundException(trainingId);
         }
+        return trainingRepository.findById(trainingId);
     }
 
     /**
