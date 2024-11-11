@@ -27,6 +27,20 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc(addFilters = false)
 class TrainingApiIntegrationTest extends IntegrationTestBase {
 
+    //
+    //
+    //
+    //
+    //      Edytowaliśmy tutaj user.id na user.Id,
+    //      ponieważ takiego podejścia Pan używa w testach UserApiIntegrationTest
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
     @Autowired
     private MockMvc mockMvc;
 
