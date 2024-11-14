@@ -36,7 +36,8 @@ class TrainingController {
      * Retrieves a training session by its ID.
      *
      * @param trainingId The ID of the training session to retrieve
-     * @return An Optional containing the TrainingDto if found, or empty if not found
+     * @return An Optional containing the TrainingDto if found, or empty if not
+     *         found
      * @throws TrainingNotFoundException if the training session is not found
      */
     @GetMapping("/training/{trainingId}")
@@ -57,9 +58,11 @@ class TrainingController {
     @GetMapping
     public List<TrainingDto> getAllTrainings() {
         return trainingService.findAllTrainings()
-                            .stream()
-                            .map(trainingMapper::toDto)
-                            .toList();
+                .stream()
+                .map(trainingMapper::toDto)
+                .toList();
+    }
+
     /**
      * Creates a new training session.
      *
@@ -104,7 +107,8 @@ class TrainingController {
      * Retrieves training sessions that ended after a specified timestamp.
      *
      * @param afterTime The timestamp after which the training sessions ended
-     * @return A list of TrainingDto objects that ended after the specified timestamp
+     * @return A list of TrainingDto objects that ended after the specified
+     *         timestamp
      */
     @GetMapping("/finished/{afterTime}")
     public List<TrainingDto> getFinishedTrainingsAfter(@PathVariable String afterTime) {
@@ -117,7 +121,8 @@ class TrainingController {
     /**
      * Retrieves training sessions for a specific activity type.
      *
-     * @param activityType The type of activity for which training sessions are to be retrieved
+     * @param activityType The type of activity for which training sessions are to
+     *                     be retrieved
      * @return A list of TrainingDto objects for the specified activity type
      */
     @GetMapping("/activityType")
