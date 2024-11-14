@@ -104,11 +104,14 @@ class TrainingServiceImpl implements TrainingProvider, TrainingService {
      *
      * @param training The Training entity to be created
      * @return The created Training entity
-     * @throws UnsupportedOperationException if the method is not implemented
+     * @throws IllegalArgumentException if training already exists in DB (Has DB ID)
      */
     @Override
     public Training createTraining(Training training) {
-        throw new UnsupportedOperationException("Not finished yet");
+        if (training.getId() != null) {
+            throw new IllegalArgumentException("Training has already DB ID, update is not permitted!");
+        }
+        return trainingRepository.save(training);
     }
 
     /**
@@ -116,11 +119,14 @@ class TrainingServiceImpl implements TrainingProvider, TrainingService {
      *
      * @param training The Training entity to be updated
      * @return The updated Training entity
-     * @throws UnsupportedOperationException if the method is not implemented
+     * @throws IllegalArgumentException if training doesn't already exist in DB (Has no DB ID)
      */
     @Override
     public Training updateTraining(Training training) {
-        throw new UnsupportedOperationException("Not finished yet");
+        if (training.getId() == null) {
+            throw new IllegalArgumentException("Training has no DB ID, create is not permitted!");
+        }
+        return trainingRepository.save(training);
     }
 
 }
