@@ -1,7 +1,5 @@
 package com.capgemini.wsb.fitnesstracker.user.internal;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.capgemini.wsb.fitnesstracker.user.api.User;
 
 import org.springframework.stereotype.Component;
@@ -54,7 +52,7 @@ public class UserMapper {
      * @param userDto The UserDto to convert
      * @return The corresponding User entity
      */
-    User toEntity(UserDto userDto) {
+    public User toEntity(UserDto userDto) {
         return new User(
                         userDto.firstName(),
                         userDto.lastName(),
