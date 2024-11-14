@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.capgemini.wsb.fitnesstracker.training.api.Training;
+import com.capgemini.wsb.fitnesstracker.user.api.User;
 import com.capgemini.wsb.fitnesstracker.user.api.UserProvider;
 import com.capgemini.wsb.fitnesstracker.user.internal.UserMapper;
 
@@ -56,5 +57,23 @@ class TrainingMapper {
                 training.getActivityType(),
                 training.getDistance(),
                 training.getAverageSpeed());
+    }
+
+    /**
+     * Converts a TrainingDto to a Training entity.
+     *
+     * @param trainingDto The TrainingDto to convert
+     * @return The corresponding Training entity
+     */
+    Training toEntity(TrainingDto trainingDto) {
+        User user = trainingDto.getUser() != null
+                ? userMapper.toEntity(trainingDto.getUser())
+                : userProvider.getUser(trainingDto.getUserId()).get();
+        return new Training(user,
+                trainingDto.getStartTime(),
+                trainingDto.getEndTime(),
+                trainingDto.getActivityType(),
+                trainingDto.getDistance(),
+                trainingDto.getAverageSpeed());
     }
 }
