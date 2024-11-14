@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.capgemini.wsb.fitnesstracker.training.api.Training;
-import com.capgemini.wsb.fitnesstracker.user.internal.UserDto;
 import com.capgemini.wsb.fitnesstracker.user.api.UserProvider;
 import com.capgemini.wsb.fitnesstracker.user.internal.UserMapper;
 
@@ -29,12 +28,10 @@ class TrainingMapper {
     /**
      * Constructs a TrainingMapper with the specified UserMapper.
      *
-     * @param userMapper The UserMapper to be used for mapping user data
      * @param userMapper   The UserMapper to be used for mapping user data
      * @param userProvider The UserProvider to be used for retrieving user data
      */
     @Autowired
-    public TrainingMapper(UserMapper userMapper) {
     public TrainingMapper(UserMapper userMapper, UserProvider userProvider) {
         this.userMapper = userMapper;
         this.userProvider = userProvider;
@@ -46,7 +43,7 @@ class TrainingMapper {
      * @param training The Training entity to be mapped
      * @return The mapped TrainingDto object
      */
-    public TrainingDto toDto(Training training){
+    public TrainingDto toDto(Training training) {
         if (training == null) {
             return null;
         }
