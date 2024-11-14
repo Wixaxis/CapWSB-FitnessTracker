@@ -50,11 +50,11 @@ class TrainingMapper {
         return new TrainingDto(
                 training.getId(),
                 userMapper.toDto(training.getUser()),
+                (training.getUser() != null) ? training.getUser().getId() : null,
                 training.getStartTime(),
                 training.getEndTime(),
                 training.getActivityType(),
                 training.getDistance(),
-                training.getAverageSpeed()
-        );
+                training.getAverageSpeed());
     }
 }
