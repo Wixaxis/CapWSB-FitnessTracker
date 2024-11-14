@@ -16,6 +16,7 @@ import lombok.Data;
 class TrainingDto {
     private Long id;
     private UserDto user;
+    private Long userId;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS+00:00", timezone = "UTC")
     private Date startTime;
@@ -38,9 +39,10 @@ class TrainingDto {
      * @param distance The distance covered in the training session
      * @param averageSpeed The average speed during the training session
      */
-    public TrainingDto(Long id, UserDto user, Date startTime, Date endTime, ActivityType activityType, double distance, double averageSpeed) {
+    public TrainingDto(Long id, UserDto user, Long userId, Date startTime, Date endTime, ActivityType activityType, double distance, double averageSpeed) {
         this.id = id;
         this.user = user;
+        this.userId = userId;
         this.startTime = startTime;
         this.endTime = endTime;
         this.activityType = activityType;
