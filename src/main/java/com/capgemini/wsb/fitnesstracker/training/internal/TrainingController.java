@@ -7,11 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.capgemini.wsb.fitnesstracker.training.api.Training;
 import com.capgemini.wsb.fitnesstracker.training.api.TrainingNotFoundException;
 
 import lombok.RequiredArgsConstructor;
@@ -71,6 +73,17 @@ class TrainingController {
     }
 
     /**
+     * Updates a training session.
+     *
+     * @param trainingDto TrainingDto object containing training details
+     * @return A ResponseEntity containing the created Training object
+     */
+    @PutMapping("/{trainingId}")
+    public ResponseEntity<TrainingDto> updateTraining(@PathVariable Long trainingId,
+            @RequestBody TrainingDto trainingDto) {
+        Training training = trainingMapper.toEntity(trainingDto);
+        training.setId(trainingId);
+        return ResponseEntity.status(200).body(trainingMapper.toDto(trainingService.updateTraining(training)));
     }
 
     /**
