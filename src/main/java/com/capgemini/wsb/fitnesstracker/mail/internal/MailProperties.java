@@ -17,6 +17,6 @@ class MailProperties {
     /**
      * Email address that the email should be sent from.
      */
-    private final String from;
+    private final String from = "test@example.com";
 
 }
