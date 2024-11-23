@@ -1,0 +1,15 @@
+meta {
+  name: statistics_of_user
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:8080/v1/statistics/user/:userId
+  body: none
+  auth: none
+}
+
+params:path {
+  userId: 2
+}

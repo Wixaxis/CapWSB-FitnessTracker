@@ -1,0 +1,15 @@
+meta {
+  name: statistics_over_total_calories
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:8080/v1/statistics/calories/:totalCalories
+  body: none
+  auth: none
+}
+
+params:path {
+  totalCalories: 200
+}

@@ -1,0 +1,20 @@
+meta {
+  name: statistics_create
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8080/v1/statistics
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "userId": "2",
+    "totalCaloriesBurned": "250",
+    "totalDistance": "35.5",
+    "totalTrainings": "10"
+  }
+}

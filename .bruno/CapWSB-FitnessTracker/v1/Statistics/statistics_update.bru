@@ -1,0 +1,24 @@
+meta {
+  name: statistics_update
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:8080/v1/statistics/:statisticsId
+  body: json
+  auth: none
+}
+
+params:path {
+  statisticsId: 11
+}
+
+body:json {
+  {
+    "userId": "1",
+    "totalCaloriesBurned": "350",
+    "totalDistance": "45.5",
+    "totalTrainings": "15"
+  }
+}
